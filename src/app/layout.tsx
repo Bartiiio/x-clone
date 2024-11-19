@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
+// import type { AppProps } from "next/app";
+// import { SessionProvider } from "next-auth/react";
 import Sidebar from "@/components/Sidebar";
 import FollowBar from "@/components/FollowBar";
+import LoginModal from "@/components/modals/LoginModal";
+import RegisterModal from "@/components/modals/RegisterModal";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
    title: "X platform",
@@ -16,6 +21,10 @@ export default function RootLayout({
    return (
       <html lang="pl">
          <body className={`antialiased`}>
+            {/* <SessionProvider session={pageProps.session}> */}
+            <RegisterModal />
+            <LoginModal />
+            <Toaster />
             <div className="h-screen bg-black">
                <div className="container h-full mx-auto xl:px-32 max-w-7xl">
                   <div className="grid grid-cols-4 h-full">
@@ -27,6 +36,7 @@ export default function RootLayout({
                   </div>
                </div>
             </div>
+            {/* </SessionProvider> */}
          </body>
       </html>
    );
